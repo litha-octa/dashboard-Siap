@@ -1,7 +1,6 @@
 import ChartImg from './chart.png'
-export {
-  ChartImg,
-}
+import ChartImg2 from './chart2.png'
+export { ChartImg, ChartImg2, };
 
 export const backIcon =
   "https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/arrow-icon-18-256.png";  

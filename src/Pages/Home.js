@@ -1,6 +1,6 @@
 import React from "react";
 import './style.css'
-import { userIcon, menuAside, ChartImg } from "../assets";
+import { userIcon, menuAside, ChartImg, ChartImg2 } from "../assets";
 import { Link } from "react-router-dom";
 import {
   PieChart,
@@ -39,8 +39,7 @@ const today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
     const namaUser='Hopkins01'
     return (
       <div className="body">
-        <div className="navbar">
-          Hai Admin </div>
+        <div className="navbar">Hai Admin </div>
         <div className="container">
           <div className="aside">
             <div className="aside-userInfo">
@@ -50,7 +49,7 @@ const today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
             <div className="aside-container">
               {menuAside.map((item) => {
                 return (
-                  <Link to="/all-user">
+                  <Link to={item.name ==='User List'? "/all-user":' '}>
                     <div className="menuItem">
                       <img
                         src={item.img}
@@ -66,6 +65,7 @@ const today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
           </div>
           <div className="main">
             <img src={ChartImg} className="chartImgFromFirebase" />
+            <img src={ChartImg2} className="chartImgFromFirebase" />
             <div className="chartContainer">
               <div className="titleChart">
                 Jumlah Unduh dalam 6 bulan Terakhir
@@ -81,7 +81,7 @@ const today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
                   top: 5,
                   right: 30,
                   left: 100,
-                  bottom: 5,
+                  bottom: 25,
                 }}
                 barSize={20}
               >
@@ -107,8 +107,8 @@ const today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
                 margin={{
                   top: 5,
                   right: 30,
-                  left: 100,
-                  bottom: 5,
+                  left: 50,
+                  bottom: 25,
                 }}
                 className="chart"
                 barSize={20}
