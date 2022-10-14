@@ -8,7 +8,7 @@
     background-color: #B70909;
     height: 10%;
     width: 95%;
-
+    box-shadow: 1px 3px 10px 2px #888888;
     color:white;
     font-size: 25px;
     font-weight: bold;
@@ -16,129 +16,48 @@
     padding-top : 15px;
     padding-left: 5%;
 }
-.backIconInNavbar{
-    width: 30px;
-    height: 20px;
-    flex-direction: row-reverse;
-}
 .titleInNavbar{
     font-size: 35px;
         color: white;
         text-decoration: none;
-        text-align: center;
-}
-.textInNavbar{
-    font-size: 15px;
-    color: white;
-    text-decoration: none;
 }
 .container{
+    width: 100%;
+    margin: 2% 0;
+    padding: 10px;
+    color: white;
+    font-family: roboto;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
-.aside{
-    width: 15%;
-    height: 100%;
-    position: absolute;
-    
-    
+.user-count{
+    width: 20%;
+    background-color: #e63946;
+    font-size: 30px;
+    height: 200px;
+   padding: 20 0 0 0;
+   border-radius: 10px;
 }
-        .aside-userInfo{
-            height: 25vh;
-        }
-        .asideIcon{
-            width: 70px;
-            height: 70px;
-            resize: contain;
-            margin: 20px  0 0 15%;
-            align-self: center;
-            opacity: 0.5;
-        }
-        .asideUserName{
-            font-size: 17px;
-            font-family: roboto;
-            margin: 2vw 0 0 2vw;
-            color:grey;
-            font-weight: bold;
-        }
-        .asideIconMini{
-            width: 30px;
-            height: 30px;
-            margin: 10px 20px;
-            opacity: 0.5;
-        }
-        .asideMenuText{
-            font-family: roboto;
-            font-size: 15px;
-            color: grey;
-            margin-top: 20px;
-        }
-        .menuItem{
-            display: flex;
-            flex-direction: row;
-            margin: 0px 0 0 10%;
-            align-content: center;
-            width: 80%;
-            
-        }
-.main{
-    width: 75%;
-    margin-left: 10%;
+.user-rating {
+   border-radius: 10px;
+    width: 20%;
+    background-color: #ffbd00;
+    font-size: 30px;
+    height: 200px;
+    padding: 20 0 0 0;
 }
-.chartImgFromFirebase{
-    width: 90%;
-    margin :  0 0 0 10%;
+.user-list {
+   border-radius: 10px;
+    width: 40%;
+    background-color: #ff9e00;
+    font-size: 30px;
+    height: 200px;
+    padding: 20 0 0 0;
 }
-        .chartContainer{
-            margin-top: 2%;
-            margin-left: 10%;
-            display: flex;
-            flex-direction: row;
-           
-        }
-        .titleChart{
-            margin:0 0 5% 15%;
-            font-family: roboto;
-            font-size: 20px;
-            color: black;
-        }
-        .chart{
-            width: 400;
-            height: 400;
-        }
+.title-inBox{
+    margin: 20px 0 0 0;
+    font-size: 25;
+    text-align: center;
 
-@media screen and (max-width: 768px) {
-
-    .aside {
-            width: 30%;
-            height: 100%;
-            position: relative;
-        }
-                .main {
-                    width: 65%;
-                    margin-left: 0%;
-                    flex-direction: column;
-                    border-left-style: solid;
-                        border-left-width: 1px;
-                }
-}
-@media screen and (max-width: 425px) {
-
-    .aside {
-        width: 35%;
-        height: 100%;
-        position: relative;
-    }
-
-    .main {
-        width: 65%;
-        margin-left: 0%;
-        flex-direction: column;
-        border-left-style: solid;
-        border-left-width: 1px;
-    }
-    .chart{
-        width: 100px;
-        height: 100px;
-    }
 }

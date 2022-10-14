@@ -1,137 +1,51 @@
-import React from "react";
-import './style.css'
-import { userIcon, menuAside, ChartImg, ChartImg2 } from "../assets";
-import { Link } from "react-router-dom";
-import {
-  PieChart,
-  Pie,
-  Tooltip,
-  BarChart,
-  XAxis,
-  YAxis,
-  Legend,
-  CartesianGrid,
-  Bar,
-} from "recharts";
+import React, {useEffect, useState} from "react";
+import axios from  'axios';
 
-const Home = () =>{
-  let newDate = new Date()
-let date = newDate.getDate();
-let month = newDate.getMonth() + 1;
-let year = newDate.getFullYear();
+const Home = () => {
+const [allUsers, setAllUsers] = useState()
+const UserRate =4.5;
+const [totalUser, setTotalUser] = useState ()
 
-const today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
 
-  const data = [
-    { name: "Mei", users: 2000 },
-    { name: "Juni", users: 3500 },
-    { name: "Juli", users: 6000 },
-    { name: "Agu", users: 5500 },
-    { name: "Sep", users: 8000 },
-    { name: "Okt", users: 11000 },
-  ];
-   const data2 = [
-     { name: "Tampilan", penilaian: 40 },
-     { name: "Fungsi", penilaian: 35 },
-     { name: "Valid Info", penilaian: 60 },
-     { name: "Feedback", penilaian: 55 },
-   ];
-    const namaUser='Hopkins01'
-    return (
-      <div className="body">
-        <div className="navbar">Hai Admin </div>
-        <div className="container">
-          <div className="aside">
-            <div className="aside-userInfo">
-              <img src={userIcon} alt="userIcon" className="asideIcon" />
-              <div className="asideUserName">{namaUser}</div>
-            </div>
-            <div className="aside-container">
-              {menuAside.map((item) => {
-                return (
-                  <Link to={item.name ==='User List'? "/all-user":' '}>
-                    <div className="menuItem">
-                      <img
-                        src={item.img}
-                        alt="userIcon"
-                        className="asideIconMini"
-                      />
-                      <div className="asideMenuText">{item.name}</div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-          <div className="main">
-            <img src={ChartImg} className="chartImgFromFirebase" />
-            <img src={ChartImg2} className="chartImgFromFirebase" />
-            <div className="chartContainer">
-              <div className="titleChart">
-                Jumlah Unduh dalam 6 bulan Terakhir
+
+useEffect(()=>{
+axios
+.get("http://165.22.242.111:8300/get-user/all")
+.then ((res)=>{
+              console.log(res.data.result)
+              setAllUsers(res.data.result)
+              setTotalUser(Object.keys(res.data.result).length);
+
+            })
+.catch((err)=>{console.log (err)})
+},[])
+  return (
+    <div className="body">
+      <div className="navbar">
+        <div className="titleInNavbar">Dashboard</div>
+      </div>
+      <div className="container">
+        <div className="user-count">
+          <div className="title-inBox">Total User</div>
+          <div className="title-inBox">{totalUser}</div>
+        </div>
+        <div className="user-rating">
+          <div className="title-inBox">User Rating</div>
+          <div>{UserRate} / 5</div>
+        </div>
+        <div className="user-list">
+          <div className="title-inBox">User List</div>
+          {allUsers?.map((item) => {
+            return (
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div>{item.username}</div>
+                <div>{item.nik}</div>
               </div>
-              <div className="titleChart">Aspek Penilaian</div>
-            </div>
-            <div className="chartContainer">
-              <BarChart
-                width={400}
-                height={280}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 100,
-                  bottom: 25,
-                }}
-                barSize={20}
-              >
-                <XAxis
-                  dataKey="name"
-                  scale="point"
-                  padding={{ left: 10, right: 10 }}
-                />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Bar
-                  dataKey="users"
-                  fill="#59080B"
-                  background={{ fill: "#eee" }}
-                />
-              </BarChart>
-              <BarChart
-                width={400}
-                height={280}
-                data={data2}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 50,
-                  bottom: 25,
-                }}
-                className="chart"
-                barSize={20}
-              >
-                <XAxis
-                  dataKey="name"
-                  scale="point"
-                  padding={{ left: 10, right: 10 }}
-                />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Bar
-                  dataKey="penilaian"
-                  fill="#59080B"
-                  background={{ fill: "#eee" }}
-                />
-              </BarChart>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
-    );
+    </div>
+  );
 }
 export default Home;
