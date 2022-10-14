@@ -1,6 +1,10 @@
 import ChartImg from './chart.png'
 import ChartImg2 from './chart2.png'
-export { ChartImg, ChartImg2, };
+import NegativeIcon from './negativeIcon.png'
+import NeutralIcon from './neutralIcon.png'
+import PositiveIcon from './positiveIcon.png'
+import StarIcon from './star.png'
+export { ChartImg, ChartImg2, NegativeIcon,NeutralIcon, PositiveIcon, StarIcon };
 
 export const backIcon =
   "https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/arrow-icon-18-256.png";  
